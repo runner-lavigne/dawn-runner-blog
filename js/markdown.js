@@ -145,12 +145,15 @@ function parseMarkdown(md) {
     if (imgMatch) {
       flushParagraph();
       closeList();
-      var alt = imgMatch[1];
+      var altRaw = imgMatch[1];
       var src = imgMatch[2];
+      var widthMatch = altRaw.match(/^(.*?)\|(\d+)$/);
+      var alt = widthMatch ? widthMatch[1] : altRaw;
+      var widthAttr = widthMatch ? ' style="max-width:' + widthMatch[2] + 'px"' : '';
       if (alt) {
-        html += '<figure><img src="' + src + '" alt="' + escapeHtml(alt) + '" loading="lazy"><figcaption>' + escapeHtml(alt) + '</figcaption></figure>\n';
+        html += '<figure' + widthAttr + '><img src="' + src + '" alt="' + escapeHtml(alt) + '" loading="lazy"><figcaption>' + escapeHtml(alt) + '</figcaption></figure>\n';
       } else {
-        html += '<figure><img src="' + src + '" alt="" loading="lazy"></figure>\n';
+        html += '<figure' + widthAttr + '><img src="' + src + '" alt="" loading="lazy"></figure>\n';
       }
       continue;
     }
@@ -173,7 +176,12 @@ function parseMarkdown(md) {
 }
 
 function inlineFormat(text) {
-  text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy">');
+  text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, function(m, altRaw, src) {
+    var wm = altRaw.match(/^(.*?)\|(\d+)$/);
+    var alt = wm ? wm[1] : altRaw;
+    var style = wm ? ' style="max-width:' + wm[2] + 'px"' : '';
+    return '<img src="' + src + '" alt="' + alt + '"' + style + ' loading="lazy">';
+  });
   text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
   text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');

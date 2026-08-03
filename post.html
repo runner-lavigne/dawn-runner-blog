@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>새벽을 달리는 여자</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title">새벽을 달리는 여자</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">
+        <span id="themeIcon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <article id="postArticle"></article>
+    <nav class="post-nav">
+      <a href="index.html" class="back-link">&larr; 목록으로 돌아가기</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    &copy; 2026 새벽을 달리는 여자. All rights reserved.
+  </footer>
+
+  <script src="js/markdown.js"></script>
+  <script src="js/post.js"></script>
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+      updateIcon();
+
+      document.getElementById('themeToggle').addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var isDark = current === 'dark' ||
+          (!current && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        var next = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateIcon();
+      });
+
+      function updateIcon() {
+        var theme = document.documentElement.getAttribute('data-theme');
+        var isDark = theme === 'dark' ||
+          (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.getElementById('themeIcon').textContent = isDark ? '☀️' : '🌙';
+      }
+    })();
+  </script>
+</body>
+</html>

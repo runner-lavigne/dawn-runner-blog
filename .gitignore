@@ -1,0 +1,18 @@
+# Obsidian
+.obsidian/
+블로그/
+
+# macOS
+.DS_Store
+Thumbs.db
+
+# 원본 사진 폴더
+0716_*/
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Claude
+.claude/plans/

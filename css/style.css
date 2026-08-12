@@ -282,6 +282,13 @@ img {
   box-shadow: var(--img-shadow);
 }
 
+.post-content figure.small img {
+  width: 60%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+
 .post-content figcaption {
   text-align: center;
   font-size: 0.8rem;

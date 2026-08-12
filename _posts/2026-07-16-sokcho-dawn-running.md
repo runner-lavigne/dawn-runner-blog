@@ -92,7 +92,7 @@ thumbnail: /posts/sokcho-dawn-running/images/05-ocean-sunrise.jpeg
 
 숙소에 돌아와 시계를 확인했다.
 
-<figure>
+<figure class="small">
   <img src="images/08-running-stats.jpeg" alt="오늘의 러닝 데이터">
   <figcaption>오늘의 러닝 데이터</figcaption>
 </figure>
@@ -107,7 +107,7 @@ thumbnail: /posts/sokcho-dawn-running/images/05-ocean-sunrise.jpeg
 
 평소 서울에서 달릴 때보다 페이스가 좀 느렸다. 풍경에 취해서 멈추고, 사진 찍고, 다시 달리기를 반복했으니 당연한 결과다. 하지만 이 러닝의 목적은 기록 갱신이 아니었다. 속초의 새벽을, 몸으로 기억하는 것. 그것으로 충분했다.
 
-<figure>
+<figure class="small">
   <img src="images/01-after-run.jpeg" alt="8km 완주 — 오늘도 달렸다">
   <figcaption>8km 완주 — 오늘도 달렸다</figcaption>
 </figure>

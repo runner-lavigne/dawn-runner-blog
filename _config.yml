@@ -1,0 +1,29 @@
+title: 새벽을 달리는 여자
+description: "러닝, 건강, 여행 — 새벽을 달리며 만나는 일상의 기록"
+url: "https://runner-lavigne.github.io"
+baseurl: "/dawn-runner-blog"
+lang: ko
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /posts/:slug/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# GitHub Pages는 위 두 플러그인을 별도 설치 없이 자동 지원합니다.
+
+exclude:
+  - CLAUDE.md
+  - README.md
+  - posts/posts.json
+  - posts/templates
+  - posts/sokcho-dawn-running/index.md
+  - post.html
+  - js/main.js
+  - js/post.js
+  - js/markdown.js
